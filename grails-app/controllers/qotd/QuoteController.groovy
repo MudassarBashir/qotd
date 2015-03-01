@@ -3,6 +3,7 @@ package qotd
 class QuoteController {
 
 	static scaffold = true
+	def quoteService
 	static defaultAction = "home" /* Double quote is important here. Single quote didn't work! */
 
     def index() { }
@@ -12,16 +13,7 @@ class QuoteController {
 	}
 
 	def random() {
-		def allQuotes = Quote.list() 
-		def randomQuote
-		if ( allQuotes.size() > 0 ) {
-			def randomIdx = new Random().nextInt( allQuotes.size() )
-			randomQuote = allQuotes[ randomIdx ]
-		} 
-		else {
-			randomQuote = new Quote( author: "Anonymous", 
-			content: "Real Programmers Don't eat much Quiche" )
-		}
-		[ quote : randomQuote ] 
+		def randomQuote = quoteService.getRandomQuote()
+		[ quote : randomQuote ]
 	}
 }
