@@ -2,6 +2,7 @@ package qotd
 
 class QuoteController {
 
+	static scaffold = true
 	static defaultAction = "home" /* Double quote is important here. Single quote didn't work! */
 
     def index() { }
