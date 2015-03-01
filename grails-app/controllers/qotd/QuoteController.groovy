@@ -6,7 +6,9 @@ class QuoteController {
 	def quoteService
 	static defaultAction = "home" /* Double quote is important here. Single quote didn't work! */
 
-    def index() { }
+    def index() { 
+    	respond Quote.list()
+    }
 
     def home() {
 		render "<h1>Real Programmers do not eat Quiche</h1>"
